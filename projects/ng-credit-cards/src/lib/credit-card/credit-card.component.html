@@ -1,0 +1,66 @@
+<div class="ncc">
+  <div
+    class="ncc__card {{ 'ncc__card--' + getIssuer() }}"
+    [ngClass]="{
+      'ncc__card--flipped': focused === 'cvc' && getIssuer() !== 'amex'
+    }"
+  >
+    <div class="ncc__card--front">
+      <div class="ncc__card__background"></div>
+      <div class="ncc__issuer"></div>
+      <div
+        class="ncc__cvc__front"
+        [ngClass]="{
+          'ncc--focused': focused === 'cvc'
+        }"
+      >
+        {{ cvc }}
+      </div>
+      <div
+        class="ncc__number"
+        [ngClass]="{
+          'ncc--focused': focused === 'number',
+          'ncc--filled': getNumber().substr(0, 1) !== '•',
+          'ncc__number--large': isLargeNumber(getNumber())
+        }"
+      >
+        {{ getNumber() }}
+      </div>
+      <div
+        class="ncc__name"
+        [ngClass]="{
+          'ncc--focused': focused === 'name',
+          'ncc--filled': name
+        }"
+      >
+        {{ name || placeholders.name }}
+      </div>
+      <div
+        class="ncc__expiry"
+        [ngClass]="{
+          'ncc--focused': focused === 'expiry',
+          'ncc--filled': getExpiry().substr(0, 1) !== '•'
+        }"
+      >
+        <div class="ncc__expiry__valid">{{ locale.valid }}</div>
+        <div class="ncc__expiry__value">{{ getExpiry() }}</div>
+      </div>
+      <div class="ncc__chip"></div>
+    </div>
+
+    <div class="ncc__card--back">
+      <div class="ncc__card__background"></div>
+      <div class="ncc__stripe"></div>
+      <div class="ncc__signature"></div>
+      <div
+        class="ncc__cvc"
+        [ngClass]="{
+          'ncc--focused': focused === 'cvc'
+        }"
+      >
+        {{ cvc }}
+      </div>
+      <div className="ncc__issuer"></div>
+    </div>
+  </div>
+</div>
