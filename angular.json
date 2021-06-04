@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-credit-cards": {
+      "projectType": "library",
+      "root": "projects/ng-credit-cards",
+      "sourceRoot": "projects/ng-credit-cards/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-credit-cards/tsconfig.lib.json",
+            "project": "projects/ng-credit-cards/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-credit-cards/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-credit-cards/src/test.ts",
+            "tsConfig": "projects/ng-credit-cards/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-credit-cards/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-credit-cards/tsconfig.lib.json",
+              "projects/ng-credit-cards/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-credit-cards"
 }
