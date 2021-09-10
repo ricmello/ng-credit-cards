@@ -44,5 +44,8 @@
       }
     }
   },
-  "defaultProject": "ng-credit-cards"
+  "defaultProject": "ng-credit-cards",
+  "cli": {
+    "analytics": false
+  }
 }
